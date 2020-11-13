@@ -1,5 +1,6 @@
 <template>
-      <div class="menu">
+<v-app>
+      <div class="menu pa-10">
           <ul>
               <li><router-link to="/">Brand Guidelines</router-link></li>
               <li><span>LOGO & LOGO LOCKUPS</span></li>
@@ -15,6 +16,7 @@
               <li><router-link to="/Productpatterns">Product Patterns</router-link></li>
           </ul>
       </div>
+</v-app>
 </template>
 
 <script>
@@ -25,42 +27,30 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $color: red;
 $noto: "Noto Sans JP";
 
    .menu {
-    width: 350px;
-    min-height: 100vh;
+    height: 100%;
     background: #004E6C;
-    padding: 3rem;
     box-sizing: border-box;
-    position: relative;
     background-image: url('../img/patt.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: right bottom;
     box-shadow: 2px 4px 10px 8px rgba(0, 0, 0, 0.1);
-    @media screen and (max-width: 991px) {
-                    width: 100%;
-                    min-height: 100px;
-                    background-position: right;
-                    padding: 2rem;
-                }
+
     ul{
-        padding: 0;
-        margin: 0;
-        @media screen and (max-width: 991px) {
-                    display: flex;
-                    flex-wrap: wrap;
-                }
+        padding:0;
         li{
             list-style: none;
             padding-bottom: 1rem;
-            font-size: 1rem;
             font-family: $noto;
-            color: #fff;
             text-align: left;
+            a{
+                color:#fff;
+            }
             @media screen and (max-width: 991px) {
                    margin: 0.2rem;
                 }
@@ -73,12 +63,6 @@ $noto: "Noto Sans JP";
     h1{
         color: #fff;
     }
-} 
-
-a.router-link-exact-active {
-  color: #ffffff;
-  font-weight: 700;
-  text-decoration: none;
 }
 
 </style>

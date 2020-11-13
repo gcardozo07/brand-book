@@ -1,16 +1,19 @@
 <template>
-  <div class="container">
-    <div class="sidebar">
+  <v-app>
+    <v-navigation-drawer v-model="drawer" absolute temporary>
       <Menu />
-    </div>
-    <div class="content">
-      <div class="row-all">
-        <div class="content-col-1">
-          <h2>Color Values</h2>
-        </div>
-      </div>
-      <div class="row-all">
-        <div class="colors">
+    </v-navigation-drawer>
+    <v-container class="pa-0">
+          <div class="content py-16">
+            <Sidebar @accion="mostrar" />
+            <v-row>
+              <v-col class="content-col-1" cols="12" md="12">
+                <h2>Color Values</h2>
+              </v-col>
+            </v-row>
+            <br /><br />
+            <v-row class="row-all">
+              <div class="colors">
           <div class="color-in">
             <div class="color"><span>AVAYA RED</span></div>
             <div class="color-data">
@@ -367,23 +370,37 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+            </v-row>
+          </div>
+    </v-container>
+  </v-app>
 </template>
 
+
 <script>
+// @ is an alias to /src
 import Menu from "../components/Menu";
+import Sidebar from "../components/Sidebar";
+
 export default {
+  name: "Home",
+  data() {
+    return {
+      drawer: null,
+    };
+  },
   components: {
     Menu,
+    Sidebar,
+  },
+  methods: {
+    mostrar() {
+      this.drawer = this.drawer = !this.drawer;
+    },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.content{
-    padding: 3rem;
-}
+<style>
 
 </style>

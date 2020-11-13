@@ -1,9 +1,21 @@
 <template>
-  <!-- <div class="container">
-    <Menu />
-  </div> -->
-  <router-view />
+  <v-app>
+    <router-view />
+  </v-app>
 </template>
+
+<script>
+export default {
+  name: "App",
+
+  components: {},
+
+  data: () => ({
+    //
+  }),
+};
+</script>
+
 
 
 <script>
@@ -19,24 +31,53 @@ export default {
 <style lang="scss">
 $noto: "Noto Sans JP";
 
-body {
-  margin: 0;
-  padding: 0;
+.content-col-1 {
+  .image-b {
+    width: 380px;
+  }
+  h2 {
+    font-family: $noto;
+    border-left: 8px solid #da291c;
+    padding-left: 1rem;
+    font-size: 2.5rem;
+    color: #000;
+  }
+  p {
+    font-family: $noto;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+  }
+  img {
+    width: 100%;
+    padding-top: 0.5rem;
+  }
 }
-#app {
-  width: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+.content-col-2 {
+  padding: 1rem 2rem;
+  img {
+    width: 350px;
+    padding-top: 2rem;
+  }
+  .image-c {
+    width: 90%;
+  }
 }
-.container {
-  width: 100%;
+
+.row-all {
   display: flex;
   @media screen and (max-width: 991px) {
     flex-direction: column;
   }
+  figure {
+    margin: 0;
+    img {
+      padding-top: 2rem;
+      width: 100%;
+    }
+  }
 }
+
 
 a {
   font-weight: 400;
@@ -48,9 +89,10 @@ a {
 a.router-link-exact-active {
   color: #fff;
   font-weight: 700;
-  font-size: 1.1rem;
   text-decoration: none;
+  border: 1px solid #fff;
   transition: all 0.3s ease 0s;
+  padding: 5px 10px;
 }
 
 .sidebar {
@@ -61,10 +103,6 @@ a.router-link-exact-active {
 .content {
   padding: 3rem;
   text-align: left;
-  @media screen and (max-width: 991px) {
-    padding: 2rem;
-    box-sizing: border-box;
-  }
 
   .row-all {
     display: flex;
@@ -78,46 +116,7 @@ a.router-link-exact-active {
         width: 100%;
       }
     }
-    .content-col-1 {
-      width: 50%;
-      @media screen and (max-width: 991px) {
-        width: 100%;
-      }
-      .image-b {
-        width: 380px;
-      }
-    }
-    .content-col-2 {
-      width: 50%;
-      padding: 1rem 2rem;
-      @media screen and (max-width: 991px) {
-        width: 100%;
-      }
-      img {
-        width: 350px;
-        padding-top: 2rem;
-      }
 
-      .image-c {
-        width: 480px;
-      }
-    }
-    .content-col-3 {
-      padding: 0.7rem;
-      width: 50%;
-      img {
-        width: 400px;
-        margin: 0 auto;
-      }
-    }
-    .content-col-4 {
-      padding: 0.7rem;
-      width: 50%;
-      img {
-        width: 400px;
-        margin: 0 auto;
-      }
-    }
     h1 {
       font-size: 3rem;
       color: #000;
@@ -199,39 +198,6 @@ a.router-link-exact-active {
       }
     }
   }
-  .btn-res {
-    width: 175px;
-    min-height: 40px;
-    border-radius: 1.2rem;
-    background: #da291c;
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease 0s;
-    &:hover {
-      background: #c00;
-      box-shadow: 2px 4px 10px 3px rgba(0, 0, 0, 0.2);
-      img {
-        padding-left: 8px;
-      }
-    }
-    a {
-      font-family: $noto;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 25px;
-        padding-right: 5px;
-        transition: all 0.2s ease 0s;
-      }
-    }
-  }
 
   .colors {
     width: 100%;
@@ -285,9 +251,8 @@ a.router-link-exact-active {
         }
       }
       .color-data {
-        height: 90px;
         background: #fff;
-        padding: 0.8rem 1rem;
+        padding: 1rem;
         display: flex;
         justify-content: space-between;
         .data-col {
@@ -315,7 +280,6 @@ a.router-link-exact-active {
       .blt {
         width: 33.33%;
         .color-data {
-          height: 90px;
           background: #fff;
           padding: 0.8rem;
           justify-content: space-between;
@@ -344,38 +308,39 @@ a.router-link-exact-active {
       }
     }
   }
-
-  .btn-res {
-    width: 175px;
-    min-height: 40px;
-    border-radius: 1.2rem;
-    background: #da291c;
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+}
+.btn-res {
+  width: 175px;
+  min-height: 40px;
+  border-radius: 1.2rem;
+  background: #da291c;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease 0s;
+  color: #fff;
+  &:hover {
+    background: #c00;
+    box-shadow: 2px 4px 10px 3px rgba(0, 0, 0, 0.2);
+    img {
+      padding-left: 4px;
+    }
+  }
+  a {
+    font-family: $noto;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.5s ease 0s;
-    &:hover {
-      background: #c00;
-      box-shadow: 2px 4px 10px 3px rgba(0, 0, 0, 0.2);
-      img {
-        padding-left: 8px;
-      }
-    }
-    a {
-      font-family: $noto;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    color: #ffffff !important;
 
-      img {
-        width: 25px;
-        padding-right: 5px;
-        transition: all 0.2s ease 0s;
-      }
+    img {
+      width: 25px;
+      padding-right: 5px;
+      transition: all 0.2s ease 0s;
     }
   }
 }

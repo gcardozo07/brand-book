@@ -1,40 +1,50 @@
 <template>
-  <div class="container">
-    <div class="sidebar">
+<v-app>
+  <v-container class="pa-0" fluid>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+      >
       <Menu />
-    </div>
-    <div class="content">
-      <div class="home-in"></div>
-    </div>
-  </div>
+    </v-navigation-drawer>
+    <v-row>
+
+    <v-col class="pa-0" cols="12" md="12">
+      <div class="home-in"><Sidebar @accion="mostrar" /></div>
+    </v-col>
+    </v-row>
+  </v-container>
+  </v-app>
 </template>
 
 <script>
 // @ is an alias to /src
 import Menu from '../components/Menu'
+import Sidebar from '../components/Sidebar'
 
 export default {
   name: 'Home',
+    data () {
+      return {
+        drawer: null,
+      }
+    },
   components: {
-    Menu
+    Menu, Sidebar
+  },
+  methods:{
+    mostrar(){
+      this.drawer = this.drawer = !this.drawer
+    }
   }
 }
 </script>
 <style lang="scss">
-.container{
-  display: inline-flex;
-  .sidebar{
-    flex-basis: 300px;
-  }
-  .content{
-    flex-grow: 1;
-    padding: 0;
     .home-in{
       width: 100%;
       height: 100vh;
       background-image: url('../img/back.jpg');
       background-size: cover;
     }
-  }
-}
 </style>

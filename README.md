@@ -1,4 +1,4 @@
-# brand-book
+# vuetify
 
 ## Project setup
 ```

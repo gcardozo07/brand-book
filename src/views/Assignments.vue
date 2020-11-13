@@ -1,20 +1,24 @@
 <template>
-  <div class="container">
-    <div class="sidebar">
+  <v-app>
+    <v-navigation-drawer v-model="drawer" absolute temporary>
       <Menu />
-    </div>
-    <div class="content">
-        <div class="row-all">
-            <div class="content-col-1">
-        <h2>Color Assignments</h2>
-      </div>
-      <div class="content-col-2">
-        <p>You’ll notice that our products utilize specific colors from our palette. Visual design of products
+    </v-navigation-drawer>
+    <v-container class="pa-0">
+          <div class="content py-16">
+            <Sidebar @accion="mostrar" />
+            <v-row>
+              <v-col class="content-col-1" cols="12" md="6">
+                <h2>Color Assignments</h2>
+              </v-col>
+              <v-col class="content-col-1" cols="12" md="6">
+                <p>You’ll notice that our products utilize specific colors from our palette. Visual design of products
 should use their primary colors prominently, supported by their secondary palette.</p>
-      </div>
-        </div>
-        <div class="row-all">
-            <div class="assignments">
+              </v-col>
+
+            </v-row>
+            <br />
+            <v-row class="row-all">
+              <div class="assignments">
                 <div class="assignments-in">
                     <figure>
                        <img src="../img/a1.png" alt="">
@@ -52,24 +56,37 @@ should use their primary colors prominently, supported by their secondary palett
                 </div>
 
             </div>
-        </div>
-    </div>
-  </div>
+            </v-row>
+          </div>
+    </v-container>
+  </v-app>
 </template>
 
-<script>
-import Menu from '../components/Menu'
-export default {
-    components:{
-        Menu
-    }
 
-}
+<script>
+// @ is an alias to /src
+import Menu from "../components/Menu";
+import Sidebar from "../components/Sidebar";
+
+export default {
+  name: "Home",
+  data() {
+    return {
+      drawer: null,
+    };
+  },
+  components: {
+    Menu,
+    Sidebar,
+  },
+  methods: {
+    mostrar() {
+      this.drawer = this.drawer = !this.drawer;
+    },
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-.content{
-    padding: 3rem;
-}
+<style>
 
 </style>
